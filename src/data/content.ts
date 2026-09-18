@@ -2,7 +2,7 @@ import type { ContactChannel, ExperienceItem, HexBadge, LanguageBadge, Project, 
 
 export const NAV_LINKS = ["About", "Skills", "Projects", "Experience", "Contact"] as const;
 
-export const HERO_PHRASES = ["React / Node.js", "Python / FastAPI", "C# / .NET", "SQL / MongoDB", "Cloud Native"] as const;
+export const HERO_PHRASES = ["React / Node.js", "Python / Flask", "C# / .NET", "SQL / MongoDB", "Cloud Native"] as const;
 
 export const STATS: Stat[] = [
     { label: "YEARS EXP", value: "6+" },

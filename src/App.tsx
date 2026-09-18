@@ -9,6 +9,7 @@ import { Experience } from "./pages/Experience";
 import { Hero } from "./pages/Hero";
 import { Projects } from "./pages/Projects";
 import { Skills } from "./pages/Skills";
+// import AIChatBox from "./components/aichatbox/AIChatBox";
 
 export default function App() {
     const activeSection = useActiveSection("about");
@@ -16,6 +17,7 @@ export default function App() {
     return (
         <MotionConfig reducedMotion="user">
             <div className="relative min-h-screen" style={{ background: "#050a0f" }}>
+                {/* <AIChatBox /> */}
                 <HexGrid />
                 <ScanLine />
                 <Nav active={activeSection} />
