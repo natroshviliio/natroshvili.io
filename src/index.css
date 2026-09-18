@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+    --color-bg-base: #050a0f;
+    --color-bg-surface: #0a1520;
+    --color-bg-card: #0d1e2e;
+    --color-bg-elevated: #112233;
+    --color-neutral-600: #1e3448;
+    --color-neutral-500: #2a4560;
+    --color-neutral-400: #4a7090;
+    --color-neutral-300: #7aaccc;
+    --color-neutral-200: #b0d0e8;
+    --color-neutral-100: #d8eaf5;
+
+    --color-electric-cyan: #00f5ff;
+    --color-electric-blue: #0088ff;
+    --color-electric-green: #00ff88;
+    --color-neon-purple: #8b00ff;
+    --color-neon-pink: #ff0080;
+    --color-neon-yellow: #ffdd00;
+    --color-quantum: #00ffcc;
+
+    --color-accent-primary: #00f5ff;
+    --color-accent-secondary: #00ff88;
+    --color-accent-tertiary: #8b00ff;
+
+    --font-display: "Orbitron", monospace;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #050a0f;
+    color: #b0d0e8;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: #050a0f;
+}
+::-webkit-scrollbar-thumb {
+    background: #00f5ff44;
+    border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00f5ff88;
+}
+
+.font-display {
+    font-family: "Orbitron", monospace;
+}
+.font-mono {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.grid-bg {
+    background-image:
+        linear-gradient(rgba(0, 245, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 245, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.glow-cyan {
+    text-shadow:
+        0 0 10px #00f5ff,
+        0 0 30px #00f5ff66;
+}
+.glow-green {
+    text-shadow:
+        0 0 10px #00ff88,
+        0 0 30px #00ff8866;
+}
+.glow-purple {
+    text-shadow:
+        0 0 10px #8b00ff,
+        0 0 30px #8b00ff66;
+}
+
+.border-glow-cyan {
+    box-shadow:
+        0 0 0 1px #00f5ff33,
+        0 0 12px #00f5ff22;
+}
+.border-glow-green {
+    box-shadow:
+        0 0 0 1px #00ff8833,
+        0 0 12px #00ff8822;
+}
+
+.hex-badge {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.card-cyber {
+    background: linear-gradient(135deg, #0d1e2e 0%, #0a1520 100%);
+    border: 1px solid #1e3448;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00f5ff22, #00ff8822);
+    border: 1px solid #00f5ff66;
+    color: #00f5ff;
+}
+
+.tag-tech {
+    background: #00f5ff0d;
+    border: 1px solid #00f5ff33;
+    color: #00f5ff;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+}
