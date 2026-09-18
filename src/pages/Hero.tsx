@@ -33,8 +33,8 @@ export function Hero() {
     }, [phraseIdx]);
 
     return (
-        <section id="about" className="relative h-screen flex items-center grid-bg" style={{ paddingTop: "80px" }}>
-            <div className="max-w-7xl mx-auto px-6 w-full py-20">
+        <section id="about" className="relative min-h-screen flex items-center grid-bg">
+            <div className="max-w-7xl mx-auto px-6 w-full py-50">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <motion.div className="flex flex-col" initial="hidden" animate="visible" variants={stagger}>
                         <motion.div className="font-mono text-xs tracking-widest mb-4" style={{ color: "#00f5ff88" }} variants={fadeUp}>

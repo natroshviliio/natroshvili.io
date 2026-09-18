@@ -6,7 +6,7 @@ import { stagger, viewportOnce } from "../lib/motion";
 
 export function Experience() {
     return (
-        <section id="experience" className="py-24 relative min-h-screen md:h-screen">
+        <section id="experience" className="py-24 relative min-h-screen">
             <div className="max-w-7xl mx-auto px-6">
                 <SectionHeading
                     comment="// WORK_HISTORY"
