@@ -12,8 +12,6 @@ export function Skills() {
     const categories = ["All", ...Array.from(new Set(SKILLS.map((skill) => skill.category)))];
     const filtered = activeCategory === "All" ? SKILLS : SKILLS.filter((skill) => skill.category === activeCategory);
 
-    console.log(filtered);
-
     return (
         <section id="skills" className="py-24 relative min-h-screen">
             <div className="max-w-7xl mx-auto px-6">

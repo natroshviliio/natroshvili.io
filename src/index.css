@@ -30,6 +30,18 @@
     --font-display: "Orbitron", monospace;
     --font-body: "Inter", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
+
+    --animate-scanline: scanline 8s linear infinite;
+
+    @keyframes scanline {
+        0% {
+            transform: translateY(-2%);
+        }
+
+        100% {
+            transform: translateY(100vh);
+        }
+    }
 }
 
 * {
