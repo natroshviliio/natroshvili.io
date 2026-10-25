@@ -52,7 +52,7 @@ export const LANGUAGES: LanguageBadge[] = [
     { lang: "Windows Subsystem for Linux", hex: "#1f64e8", icon: "WSL" },
     { lang: "WebSocket", hex: "#5feb78", icon: "WS" },
     { lang: "WebHook", hex: "#d62139", icon: "WH" },
-    { lang: ".\\MORE_INFO.BIN", hex: "#ffe2e6", icon: "AI" },
+    { lang: ".\\assistant.exe", hex: "#ffe2e6", icon: "AI" },
 ];
 
 export const PROJECTS: Project[] = [
