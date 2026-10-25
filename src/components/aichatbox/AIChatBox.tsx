@@ -63,7 +63,7 @@ const AIChatBox = () => {
         `}>
             <div className="p-5 font-mono text-sm xl:text-lg flex justify-between items-center select-none">
                 <span>AI Assistant</span>
-                <span className={`text-xl ${chatBoxOpen ? "rotate-90" : "-rotate-90"} cursor-pointer`} onClick={toggleChatBox}>
+                <span className={`text-xl ${chatBoxOpen ? "rotate-90 " : "-rotate-90"} cursor-pointer`} onClick={toggleChatBox}>
                     ▶
                 </span>
             </div>
