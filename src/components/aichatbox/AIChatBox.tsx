@@ -6,12 +6,14 @@ import axios from "axios";
 
 type AiResponse = {
     status: boolean;
-    content: string;
+    content?: string;
+    message?: string;
 };
 
 type Content = {
     type: string;
-    content: string;
+    content: string | undefined;
+    successStatus: boolean;
 };
 
 const AIChatBox = () => {
@@ -19,7 +21,10 @@ const AIChatBox = () => {
     const [chatBoxFirstOpen, setChatBoxFirstOpen] = useState(false);
     const [prompt, setPrompt] = useState("");
     const [content, setContent] = useState<Content[]>([]);
+    const [writing, setWriting] = useState(false);
+
     const chatRef = useRef<HTMLDivElement>(null);
+    const textInputRef = useRef<HTMLInputElement>(null);
 
     const handleChangePrompt = (e: ChangeEvent<HTMLInputElement>) => setPrompt(e.target.value);
 
@@ -29,20 +34,26 @@ const AIChatBox = () => {
     };
 
     const sendPrompt = async (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key !== "Enter") return;
+        if (e.key !== "Enter" || writing) return;
 
         const message = prompt.trim();
         if (!message) return;
 
         setPrompt("");
-        setContent((content) => [...content, { type: "user", content: message }]);
+        setContent((content) => [...content, { type: "user", content: message, successStatus: true }]);
+        setWriting(true);
 
         try {
             const response = await axios.post(import.meta.env.VITE_API_URL + "/chat", { prompt: message });
             const data: AiResponse = await response.data;
 
-            if (data.status) setContent((content) => [...content, { type: "assistant", content: data.content }]);
+            setContent((content) => [
+                ...content,
+                { type: "assistant", content: data.status ? data.content : data.message, successStatus: data.status },
+            ]);
             chatRef.current?.lastElementChild?.scrollIntoView({ behavior: "smooth" });
+            setWriting(false);
+            textInputRef.current?.focus();
         } catch (err) {
             console.log(err);
         }
@@ -50,7 +61,6 @@ const AIChatBox = () => {
 
     useEffect(() => {
         chatRef.current?.lastElementChild?.scrollIntoView({ behavior: "smooth" });
-        // chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight });
     }, [content]);
 
     return (
@@ -83,18 +93,9 @@ const AIChatBox = () => {
                                 key={i}
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
-                                className={`flex p-5 flex-wrap ${c.type === "user" ? "ml-auto" : ""}`}>
-                                {c.content.split(/<\D>\D<\/\D>/g).map((char, j) => {
-                                    return (
-                                        <motion.span
-                                            key={j + "a"}
-                                            dangerouslySetInnerHTML={{ __html: char }}
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1, transition: { delay: 0.1 * j } }}
-                                        />
-                                    );
-                                })}
-                            </motion.div>
+                                className={`p-5 ${c.type === "user" ? "ml-auto" : ""} ${!c.successStatus ? "text-red-400" : ""}`}
+                                dangerouslySetInnerHTML={{ __html: c.content || "" }}
+                            />
                         );
                     })}
                 </div>
@@ -102,7 +103,15 @@ const AIChatBox = () => {
             <div className="px-10 py-5 font-mono text-electric-green border-0 border-t border-purple-950 shadow-[0_-1px_5px_-2px] shadow-accent-tertiary">
                 <motion.div className="flex text-nowrap gap-4 glow-green">
                     <span>user_prompt:</span>
-                    <input type="text" className="outline-none w-full" value={prompt} onChange={handleChangePrompt} onKeyDown={sendPrompt} />
+                    <input
+                        type="text"
+                        className="outline-none w-full"
+                        ref={textInputRef}
+                        value={prompt}
+                        onChange={handleChangePrompt}
+                        onKeyDown={sendPrompt}
+                        disabled={writing}
+                    />
                 </motion.div>
             </div>
         </div>
